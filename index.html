@@ -368,109 +368,10 @@
             font-size: 1.2rem;
         }
 
-        /* --- 9. DESIGN STUDIO INTAKE FORM --- */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-primary);
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 14px;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
-        }
-
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            grid-column: span 2;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            background: #FFFFFF;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .checkbox-label input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--accent);
-        }
-
-        .file-upload-wrapper {
-            position: relative;
-            width: 100%;
-            border: 2px dashed rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            background: #FFFFFF;
-            cursor: pointer;
-        }
-
-        .file-upload-text span {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .file-upload-wrapper input[type="file"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        /* --- 10. GUEST REVIEW STUDIO --- */
+        /* --- 10. AIRTABLE DYNAMIC EMBEDS --- */
         .iframe-placeholder {
             width: 100%;
-            height: 500px;
+            height: 600px; /* Enhanced view height to prevent cutoff on mobile screens */
             border: none;
             border-radius: 12px;
         }
@@ -533,14 +434,6 @@
 
             .hero-text h1 {
                 font-size: 2.5rem;
-            }
-
-            .form-grid, .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full-width {
-                grid-column: span 1;
             }
 
             .portfolio-grid {
@@ -645,76 +538,17 @@
             </div>
         </section>
 
+        <!-- --- 9. DESIGN STUDIO INTAKE SYSTEM (CONNECTED VIA DYNAMIC AIRTABLE INTAKE) --- -->
         <section id="intake" class="container" style="flex-direction: column;">
             <h2 class="section-title">Restoration Intake System</h2>
-            <div class="form-wrapper glass-card">
-                <form action="https://usebasin.com/f/INSERT_NEW_BASIN_ID_HERE" method="POST" enctype="multipart/form-data">
-                    
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="clientName">Your Name</label>
-                            <input type="text" id="clientName" name="name" required placeholder="Samantha Smith">
-                        </div>
-                        <div class="form-group">
-                            <label for="clientEmail">Email Coordinates</label>
-                            <input type="email" id="clientEmail" name="email" required placeholder="yourname@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="colorSelection">Primary Color Choice</label>
-                            <select id="colorSelection" name="color_choice" required>
-                                <option value="">Select one variant...</option>
-                                <option value="black">Classic Black</option>
-                                <option value="white">Pristine White</option>
-                                <option value="tan">Warm Tan</option>
-                                <option value="gray">Sleek Gray</option>
-                                <option value="copper">Metallic Copper</option>
-                                <option value="turquoise">Vibrant Turquoise</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="serviceDate">Preferred Service Date</label>
-                            <input type="date" id="serviceDate" name="service_date" required>
-                        </div>
-                        <div class="form-group full-width">
-                            <label for="location">Property Location Address</label>
-                            <input type="text" id="location" name="location" required placeholder="123 Community Lane, City State">
-                        </div>
-
-                        <div class="checkbox-grid">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="demographic[]" value="senior">
-                                Applying Senior Discount (10% Off)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="demographic[]" value="veteran">
-                                Applying Veteran Discount (10% Off)
-                            </label>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label>Current Mailbox Profile Status / Inspiration Photo</label>
-                            <div class="file-upload-wrapper">
-                                <p class="file-upload-text" id="fileNameDisplay">Drag & drop asset photo context or <span>Browse files</span></p>
-                                <input type="file" id="fileUpload" name="mailbox_image" accept="image/*">
-                            </div>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="notes">Vision & House Number Placement Notes</label>
-                            <textarea id="notes" name="vision_notes" rows="4" placeholder="Specify your exact house numbers, side preferences, or special notes for your property setup..."></textarea>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center;">
-                        <button type="submit" class="btn btn-filled" style="width: 100%; max-width: 350px;">Secure Appointment</button>
-                    </div>
-                </form>
+            <div class="form-wrapper glass-card" style="padding: 15px; width: 100%;">
+                <iframe class="airtable-embed iframe-placeholder" src="https://airtable.com/embed/appmcYXpl104029jz/pagACDCb3l2lYhihk/form" frameborder="0" onmousewheel="" style="background: transparent; border: 1px solid #ccc;"></iframe>
             </div>
         </section>
 
         <section id="reviews" class="container" style="flex-direction: column;">
             <h2 class="section-title">Community Review Studio</h2>
-            <div class="review-studio-container glass-card" style="padding: 10px;">
+            <div class="review-studio-container glass-card" style="padding: 10px; width: 100%;">
                 <iframe class="iframe-placeholder" src="https://airtable.com/embed/INSERT_NEW_AIRTABLE_FORM_ID_HERE" allowfullscreen></iframe>
             </div>
         </section>
@@ -752,18 +586,6 @@
             document.getElementById('intake').scrollIntoView({
                 behavior: 'smooth'
             });
-        });
-
-        // Dynamic File Upload Status Monitor
-        const fileInput = document.getElementById('fileUpload');
-        const fileNameDisplay = document.getElementById('fileNameDisplay');
-
-        fileInput.addEventListener('change', (e) => {
-            if(e.target.files.length > 0) {
-                fileNameDisplay.innerHTML = `Linked Visual Framework: <strong>${e.target.files[0].name}</strong>`;
-            } else {
-                fileNameDisplay.innerHTML = 'Drag & drop asset photo context or <span>Browse files</span>';
-            }
         });
     </script>
 </body>
