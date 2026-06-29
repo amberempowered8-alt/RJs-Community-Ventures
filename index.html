@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* --- 1. DESIGN SYSTEM VARIABLES --- */
@@ -16,7 +16,6 @@
             --text-muted: #4A525A;
             --accent: #00B4D8; 
             --accent-gradient: linear-gradient(135deg, #00B4D8, #0077B6);
-            --font-header: 'Inter', sans-serif;
             --font-body: 'Inter', sans-serif;
             --max-width: 1100px;
             --transition: all 0.3s ease;
@@ -40,7 +39,7 @@
             font-family: var(--font-body);
             color: var(--text-primary);
             
-            /* Setting the flyer as a beautifully fixed full-screen background backdrop */
+            /* Background image from your repository config */
             background-image: url('871.jpg');
             background-size: cover;
             background-position: center center;
@@ -48,7 +47,7 @@
             background-repeat: no-repeat;
         }
 
-        /* Screen Protection Layer: Soft ambient mask ensuring high text readability over the art background */
+        /* Screen Protection Layer for Glassmorphism readability */
         .page-overlay-mask {
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(8px);
@@ -239,7 +238,7 @@
             font-weight: 400;
         }
 
-        /* --- 6. IDENTITY / CONTENT CARDS (PREMIUM GLASSMORPHISM) --- */
+        /* --- 6. PREMIUM GLASSMORPHISM CARDS --- */
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -371,7 +370,7 @@
         /* --- 10. AIRTABLE DYNAMIC EMBEDS --- */
         .iframe-placeholder {
             width: 100%;
-            height: 600px; /* Enhanced view height to prevent cutoff on mobile screens */
+            height: 600px;
             border: none;
             border-radius: 12px;
         }
@@ -449,7 +448,8 @@
         <nav class="navbar">
             <div class="nav-container">
                 <a href="#" class="logo">
-                    <img src="image_925e7d.jpg" alt="RJ's Community Ventures Logo">
+                    <!-- Updated filename verified via your GitHub repository -->
+                    <img src="rj-logo.png" alt="RJ's Community Ventures Logo">
                     <span>RJ's Ventures</span>
                 </a>
                 <div class="nav-toggle" id="navToggle">
@@ -538,18 +538,18 @@
             </div>
         </section>
 
-        <!-- --- 9. DESIGN STUDIO INTAKE SYSTEM (CONNECTED VIA DYNAMIC AIRTABLE INTAKE) --- -->
         <section id="intake" class="container" style="flex-direction: column;">
             <h2 class="section-title">Restoration Intake System</h2>
             <div class="form-wrapper glass-card" style="padding: 15px; width: 100%;">
-                <iframe class="airtable-embed iframe-placeholder" src="https://airtable.com/embed/appmcYXpl104029jz/pagACDCb3l2lYhihk/form" frameborder="0" onmousewheel="" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                <iframe class="airtable-embed iframe-placeholder" src="https://airtable.com/embed/appmcYXpl104029jz/pagACDCb3l2lYhihk/form" style="background: transparent; border: 1px solid #ccc;"></iframe>
             </div>
         </section>
 
         <section id="reviews" class="container" style="flex-direction: column;">
             <h2 class="section-title">Community Review Studio</h2>
             <div class="review-studio-container glass-card" style="padding: 10px; width: 100%;">
-                <iframe class="iframe-placeholder" src="https://airtable.com/embed/INSERT_NEW_AIRTABLE_FORM_ID_HERE" allowfullscreen></iframe>
+                <!-- Swap with your live Airtable shared review ID when ready -->
+                <iframe class="iframe-placeholder" src="https://airtable.com/embed/YOUR_ACTUAL_SHARED_REVIEW_VIEW_ID" allowfullscreen></iframe>
             </div>
         </section>
 
@@ -566,7 +566,6 @@
     </div>
 
     <script>
-        // Menu Toggle Animation Architecture
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -574,14 +573,12 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close on select for responsive screens
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // Instant Quick Scroll Action for Select Action Button
         document.querySelector('.selection-btn').addEventListener('click', () => {
             document.getElementById('intake').scrollIntoView({
                 behavior: 'smooth'
