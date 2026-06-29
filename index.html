@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RJ's Community Ventures | Mailbox Restoration</title>
     
-    <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,19 +12,17 @@
     <style>
         /* --- 1. DESIGN SYSTEM VARIABLES --- */
         :root {
-            --bg-primary: #FFFFFF;
-            --bg-panel: #F4F7F6;
             --text-primary: #1A1D20;
-            --text-muted: #5A626A;
-            --accent: #00B4D8; /* Vibrant Turquoise pulled from 871_2.jpg */
+            --text-muted: #4A525A;
+            --accent: #00B4D8; 
             --accent-gradient: linear-gradient(135deg, #00B4D8, #0077B6);
-            --font-header: 'Cinzel', serif;
+            --font-header: 'Inter', sans-serif;
             --font-body: 'Inter', sans-serif;
             --max-width: 1100px;
             --transition: all 0.3s ease;
         }
 
-        /* --- 2. BASE STYLES & RESET --- */
+        /* --- 2. BASE STYLES & BACKGROUND CONFIGURATION --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -34,19 +31,34 @@
 
         html {
             scroll-behavior: smooth;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
         }
 
         body {
             overflow-x: hidden;
             line-height: 1.6;
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            
+            /* Setting the flyer as a beautifully fixed full-screen background backdrop */
+            background-image: url('871.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Screen Protection Layer: Soft ambient mask ensuring high text readability over the art background */
+        .page-overlay-mask {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            min-height: 100vh;
+            width: 100%;
         }
 
         section {
-            padding: 90px 20px;
+            padding: 100px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -127,9 +139,9 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding: 15px 20px;
         }
@@ -143,10 +155,19 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            height: 42px;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .logo span {
@@ -186,24 +207,22 @@
 
         /* --- 5. HERO CANVAS --- */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             padding: 140px 20px 60px 20px;
-            background: radial-gradient(circle at 90% 10%, #E8F8FA 0%, #FFFFFF 60%);
             display: flex;
             align-items: center;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
+        .hero-text {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             line-height: 1.15;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: -1px;
         }
 
@@ -214,54 +233,24 @@
         }
 
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             font-weight: 400;
         }
 
-        .hero-image-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .brand-graphic-container {
-            width: 100%;
-            max-width: 420px;
-            background: #FFFFFF;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .brand-graphic-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-        }
-
-        /* --- 6. IDENTITY / STATEMENT BLOCK --- */
-        .identity-card {
-            background: var(--bg-panel);
+        /* --- 6. IDENTITY / CONTENT CARDS (PREMIUM GLASSMORPHISM) --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+        }
+
+        .identity-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 50px;
@@ -289,8 +278,8 @@
         }
 
         .badge-discount {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 800;
             color: #D62246;
             margin-bottom: 5px;
         }
@@ -310,7 +299,7 @@
         .portfolio-item {
             position: relative;
             height: 320px;
-            background: var(--bg-panel);
+            background: rgba(0, 0, 0, 0.05);
             border-radius: 16px;
             overflow: hidden;
         }
@@ -322,7 +311,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
         }
 
         .portfolio-overlay h4 {
@@ -342,16 +331,11 @@
         .pricing-container {
             max-width: 650px;
             margin: 0 auto;
-            background: #FFFFFF;
-            border: 2px solid var(--accent);
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 15px 35px rgba(0, 180, 216, 0.08);
             text-align: center;
         }
 
         .price-tag {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 800;
             color: var(--text-primary);
             margin: 20px 0;
@@ -385,14 +369,6 @@
         }
 
         /* --- 9. DESIGN STUDIO INTAKE FORM --- */
-        .form-wrapper {
-            background: var(--bg-panel);
-            border-radius: 24px;
-            padding: 50px;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -436,7 +412,7 @@
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
         }
 
         .checkbox-grid {
@@ -492,14 +468,6 @@
         }
 
         /* --- 10. GUEST REVIEW STUDIO --- */
-        .review-studio-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: var(--bg-panel);
-            border-radius: 24px;
-            padding: 15px;
-        }
-
         .iframe-placeholder {
             width: 100%;
             height: 500px;
@@ -533,15 +501,9 @@
 
         /* --- 12. RESPONSIVE DESIGN --- */
         @media (max-width: 992px) {
-            .hero-grid, .identity-card {
+            .identity-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
-            }
-            .hero-image-wrapper {
-                order: -1;
-            }
-            .included-list {
-                margin: 30px auto;
             }
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -589,196 +551,186 @@
 </head>
 <body>
 
-    <!-- 1. NAVIGATION BAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">RJ's <span>Community Ventures</span></a>
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Our Venture</a></li>
-                <li><a href="#offer">The Service</a></li>
-                <li><a href="#gallery">Color Choices</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#intake" class="btn">Book Appointment</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="page-overlay-mask">
 
-    <!-- 2. HERO CANVAS -->
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Let us bring life back to your <span>Mailbox!</span></h1>
-                <p>Professional architectural mailbox restoration at an affordable price point. New paint styling, highly visible reflective numbers, and a clear protective UV envelope shield.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="#intake" class="btn btn-filled">Restore My Mailbox Now</a>
-                    <a href="tel:405-968-5063" class="btn">Call / Text 405-968-5063</a>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <img src="image_925e7d.jpg" alt="RJ's Community Ventures Logo">
+                    <span>RJ's Ventures</span>
+                </a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">Our Venture</a></li>
+                    <li><a href="#offer">The Service</a></li>
+                    <li><a href="#gallery">Color Choices</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#intake" class="btn">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Let us bring life back to your <span>Mailbox!</span></h1>
+                    <p>Professional architectural mailbox restoration at an affordable neighborhood price point.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <a href="#intake" class="btn btn-filled">Restore My Mailbox Now</a>
+                        <a href="tel:405-968-5063" class="btn">Call / Text 405-968-5063</a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image-wrapper">
-                <div class="brand-graphic-container">
-                    <!-- Referencing image file verbatim as requested -->
-                    <img src="871_2.jpg" alt="RJ's Community Ventures Logo and Design Profile">
+        </section>
+
+        <section id="about" class="container">
+            <div class="identity-grid glass-card">
+                <div class="statement-text">
+                    <h3>Hi, Samantha here!</h3>
+                    <p>I am a local delivery driver and I've noticed a lot of mailboxes could use some LOVE! So, I have started this venture to help the community and do just that!</p>
+                    <p>Let me give life back to your mailbox and make sure your critical deliveries reliably get to YOU!</p>
+                </div>
+                <div class="badge-box">
+                    <div class="badge-discount">10% OFF</div>
+                    <h4>Seniors & Veterans</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Proudly offering structural discounts to honor community dedication.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 3. IDENTITY / STATEMENT BLOCK -->
-    <section id="about" class="container">
-        <div class="identity-card">
-            <div class="statement-text">
-                <h3>Hi, Samantha here!</h3>
-                <p>I am a local delivery driver and I've noticed a lot of mailboxes could use some LOVE! So, I have started this venture to help the community and do just that!</p>
-                <p>Let me give life back to your mailbox and make sure your critical deliveries reliably get to YOU!</p>
-            </div>
-            <div class="badge-box">
-                <div class="badge-discount">10% OFF</div>
-                <h4>Seniors & Veterans</h4>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Proudly offering structural discounts to honor community dedication.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. THE VISUAL CANVAS (PORTFOLIO / COLOR PALETTE OPTIONS) -->
-    <section id="gallery" class="container" style="flex-direction: column;">
-        <h2 class="section-title">Color Palette Architectural Choices</h2>
-        <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: var(--text-muted);">Choose one premium color accent baseline from our 6 curated community options</p>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-overlay">
-                    <h4>Classic Black & White Frameworks</h4>
-                    <p>Timeless Contrast Options</p>
+        <section id="gallery" class="container" style="flex-direction: column;">
+            <h2 class="section-title">Color Palette Architectural Choices</h2>
+            <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: var(--text-muted);">Choose one premium color accent baseline from our 6 curated community options</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Classic Black & White Frameworks</h4>
+                        <p>Timeless Contrast Options</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Tan & Natural Gray Elements</h4>
+                        <p>Earthy Grounded Palettes</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h4>Copper & Turquoise High-Contrast</h4>
+                        <p>Bespoke Metallic & Living Pop</p>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <div class="portfolio-overlay">
-                    <h4>Tan & Natural Gray Elements</h4>
-                    <p>Earthy Grounded Palettes</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-overlay">
-                    <h4>Copper & Turquoise High-Contrast</h4>
-                    <p>Bespoke Metallic & Living Pop</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. THE EXPERIENCE TIERS (ALL-INCLUSIVE STRUCTURE) -->
-    <section id="offer" class="container" style="flex-direction: column;">
-        <h2 class="section-title">The All-Inclusive Package</h2>
-        <div class="pricing-container">
-            <h3>Complete Restoration Package</h3>
-            <div class="price-tag">$75</div>
-            <p style="font-weight: 600; color: var(--text-muted);">Everything required to make your delivery asset shine bright again.</p>
-            
-            <ul class="included-list">
-                <li>One custom color choice (6 options)</li>
-                <li>Highly visible house numbering</li>
-                <li>Protective high-grade UV clear coat</li>
-                <li>Delivery accuracy safety verification</li>
-            </ul>
-            
-            <button class="btn btn-filled selection-btn" style="width: 100%;">Select This Package Structure</button>
-        </div>
-    </section>
-
-    <!-- 6. DESIGN STUDIO INTAKE FORM -->
-    <section id="intake" class="container" style="flex-direction: column;">
-        <h2 class="section-title">Restoration Intake System</h2>
-        <div class="form-wrapper">
-            <form action="https://usebasin.com/f/INSERT_NEW_BASIN_ID_HERE" method="POST" enctype="multipart/form-data">
+        <section id="offer" class="container" style="flex-direction: column;">
+            <h2 class="section-title">The All-Inclusive Package</h2>
+            <div class="pricing-container glass-card">
+                <h3>Complete Restoration Package</h3>
+                <div class="price-tag">$75</div>
+                <p style="font-weight: 600; color: var(--text-muted);">Everything required to make your delivery asset shine bright again.</p>
                 
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="clientName">Your Name</label>
-                        <input type="text" id="clientName" name="name" required placeholder="Samantha Smith">
-                    </div>
-                    <div class="form-group">
-                        <label for="clientEmail">Email Coordinates</label>
-                        <input type="email" id="clientEmail" name="email" required placeholder="yourname@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="colorSelection">Primary Color Choice</label>
-                        <select id="colorSelection" name="color_choice" required>
-                            <option value="">Select one variant...</option>
-                            <option value="black">Classic Black</option>
-                            <option value="white">Pristine White</option>
-                            <option value="tan">Warm Tan</option>
-                            <option value="gray">Sleek Gray</option>
-                            <option value="copper">Metallic Copper</option>
-                            <option value="turquoise">Vibrant Turquoise</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="serviceDate">Preferred Service Date</label>
-                        <input type="date" id="serviceDate" name="service_date" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="location">Property Location Address</label>
-                        <input type="text" id="location" name="location" required placeholder="123 Community Lane, City State">
-                    </div>
+                <ul class="included-list">
+                    <li>One custom color choice (6 options)</li>
+                    <li>Highly visible house numbering</li>
+                    <li>Protective high-grade UV clear coat</li>
+                    <li>Delivery accuracy safety verification</li>
+                </ul>
+                
+                <button class="btn btn-filled selection-btn" style="width: 100%;">Select This Package Structure</button>
+            </div>
+        </section>
 
-                    <!-- Core Identification Demographics Checkboxes -->
-                    <div class="checkbox-grid">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="demographic[]" value="senior">
-                            Applying Senior Discount (10% Off)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="demographic[]" value="veteran">
-                            Applying Veteran Discount (10% Off)
-                        </label>
-                    </div>
+        <section id="intake" class="container" style="flex-direction: column;">
+            <h2 class="section-title">Restoration Intake System</h2>
+            <div class="form-wrapper glass-card">
+                <form action="https://usebasin.com/f/INSERT_NEW_BASIN_ID_HERE" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="clientName">Your Name</label>
+                            <input type="text" id="clientName" name="name" required placeholder="Samantha Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Email Coordinates</label>
+                            <input type="email" id="clientEmail" name="email" required placeholder="yourname@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="colorSelection">Primary Color Choice</label>
+                            <select id="colorSelection" name="color_choice" required>
+                                <option value="">Select one variant...</option>
+                                <option value="black">Classic Black</option>
+                                <option value="white">Pristine White</option>
+                                <option value="tan">Warm Tan</option>
+                                <option value="gray">Sleek Gray</option>
+                                <option value="copper">Metallic Copper</option>
+                                <option value="turquoise">Vibrant Turquoise</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceDate">Preferred Service Date</label>
+                            <input type="date" id="serviceDate" name="service_date" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="location">Property Location Address</label>
+                            <input type="text" id="location" name="location" required placeholder="123 Community Lane, City State">
+                        </div>
 
-                    <!-- Custom Styled File Input -->
-                    <div class="form-group full-width">
-                        <label>Current Mailbox Profile Status / Inspiration Photo</label>
-                        <div class="file-upload-wrapper">
-                            <p class="file-upload-text" id="fileNameDisplay">Drag & drop asset photo context or <span>Browse files</span></p>
-                            <input type="file" id="fileUpload" name="mailbox_image" accept="image/*">
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="demographic[]" value="senior">
+                                Applying Senior Discount (10% Off)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="demographic[]" value="veteran">
+                                Applying Veteran Discount (10% Off)
+                            </label>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Current Mailbox Profile Status / Inspiration Photo</label>
+                            <div class="file-upload-wrapper">
+                                <p class="file-upload-text" id="fileNameDisplay">Drag & drop asset photo context or <span>Browse files</span></p>
+                                <input type="file" id="fileUpload" name="mailbox_image" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="notes">Vision & House Number Placement Notes</label>
+                            <textarea id="notes" name="vision_notes" rows="4" placeholder="Specify your exact house numbers, side preferences, or special notes for your property setup..."></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label for="notes">Vision & House Number Placement Notes</label>
-                        <textarea id="notes" name="vision_notes" rows="4" placeholder="Specify your exact house numbers, side preferences, or special notes for your property setup..."></textarea>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-filled" style="width: 100%; max-width: 350px;">Secure Appointment</button>
                     </div>
-                </div>
-
-                <div style="text-align: center;">
-                    <button type="submit" class="btn btn-filled" style="width: 100%; max-width: 350px;">Secure Appointment</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- 7. GUEST REVIEW STUDIO -->
-    <section id="reviews" class="container" style="flex-direction: column;">
-        <h2 class="section-title">Community Review Studio</h2>
-        <div class="review-studio-container">
-            <iframe class="iframe-placeholder" src="https://airtable.com/embed/INSERT_NEW_AIRTABLE_FORM_ID_HERE" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <!-- 8. FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 RJ's Community Ventures. All Rights Reserved. Bringing life back to your delivery framework.</p>
-            <div class="contact-info">
-                <span>Call or Text: 405-968-5063</span>
-                <span>Email: RJSCV2026@GMAIL.COM</span>
+                </form>
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- INTERACTIVE SCRIPTING -->
+        <section id="reviews" class="container" style="flex-direction: column;">
+            <h2 class="section-title">Community Review Studio</h2>
+            <div class="review-studio-container glass-card" style="padding: 10px;">
+                <iframe class="iframe-placeholder" src="https://airtable.com/embed/INSERT_NEW_AIRTABLE_FORM_ID_HERE" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2026 RJ's Community Ventures. All Rights Reserved. Bringing life back to your delivery framework.</p>
+                <div class="contact-info">
+                    <span>Call or Text: 405-968-5063</span>
+                    <span>Email: RJSCV2026@GMAIL.COM</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
     <script>
         // Menu Toggle Animation Architecture
         const navToggle = document.getElementById('navToggle');
