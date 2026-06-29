@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ's Community Ventures | Mailbox Restoration</title>
+    
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. DESIGN SYSTEM VARIABLES --- */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-panel: #F4F7F6;
+            --text-primary: #1A1D20;
+            --text-muted: #5A626A;
+            --accent: #00B4D8; /* Vibrant Turquoise pulled from 871_2.jpg */
+            --accent-gradient: linear-gradient(135deg, #00B4D8, #0077B6);
+            --font-header: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1100px;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- 2. BASE STYLES & RESET --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 90px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gradient);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- 3. REUSABLE COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--accent-gradient);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-filled {
+            background: var(--accent-gradient);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .btn-filled:hover {
+            background: #0077B6;
+            transform: translateY(-2px);
+        }
+
+        /* --- 4. NAVIGATION BAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 15px 20px;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* --- 5. HERO CANVAS --- */
+        .hero {
+            min-height: 90vh;
+            padding: 140px 20px 60px 20px;
+            background: radial-gradient(circle at 90% 10%, #E8F8FA 0%, #FFFFFF 60%);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brand-graphic-container {
+            width: 100%;
+            max-width: 420px;
+            background: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .brand-graphic-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        /* --- 6. IDENTITY / STATEMENT BLOCK --- */
+        .identity-card {
+            background: var(--bg-panel);
+            border-radius: 24px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .statement-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        .statement-text p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .badge-box {
+            background: #FFFFFF;
+            padding: 35px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .badge-discount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #D62246;
+            margin-bottom: 5px;
+        }
+
+        .badge-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        /* --- 7. THE VISUAL CANVAS (PORTFOLIO) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            height: 320px;
+            background: var(--bg-panel);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
+
+        .portfolio-overlay h4 {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-overlay p {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* --- 8. THE EXPERIENCE TIERS --- */
+        .pricing-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 15px 35px rgba(0, 180, 216, 0.08);
+            text-align: center;
+        }
+
+        .price-tag {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 20px 0;
+            line-height: 1;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .included-list {
+            list-style: none;
+            max-width: 320px;
+            margin: 30px auto;
+            text-align: left;
+        }
+
+        .included-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .included-list li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        /* --- 9. DESIGN STUDIO INTAKE FORM --- */
+        .form-wrapper {
+            background: var(--bg-panel);
+            border-radius: 24px;
+            padding: 50px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 14px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            grid-column: span 2;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: #FFFFFF;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            border: 2px dashed rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            background: #FFFFFF;
+            cursor: pointer;
+        }
+
+        .file-upload-text span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* --- 10. GUEST REVIEW STUDIO --- */
+        .review-studio-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-panel);
+            border-radius: 24px;
+            padding: 15px;
+        }
+
+        .iframe-placeholder {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* --- 11. FOOTER --- */
+        .footer {
+            background: #111416;
+            padding: 50px 20px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 15px;
+        }
+
+        .footer .contact-info {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* --- 12. RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .hero-grid, .identity-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image-wrapper {
+                order: -1;
+            }
+            .included-list {
+                margin: 30px auto;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #FFFFFF;
+                padding: 30px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-grid, .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">RJ's <span>Community Ventures</span></a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Our Venture</a></li>
+                <li><a href="#offer">The Service</a></li>
+                <li><a href="#gallery">Color Choices</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#intake" class="btn">Book Appointment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 2. HERO CANVAS -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Let us bring life back to your <span>Mailbox!</span></h1>
+                <p>Professional architectural mailbox restoration at an affordable price point. New paint styling, highly visible reflective numbers, and a clear protective UV envelope shield.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#intake" class="btn btn-filled">Restore My Mailbox Now</a>
+                    <a href="tel:405-968-5063" class="btn">Call / Text 405-968-5063</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="brand-graphic-container">
+                    <!-- Referencing image file verbatim as requested -->
+                    <img src="871_2.jpg" alt="RJ's Community Ventures Logo and Design Profile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. IDENTITY / STATEMENT BLOCK -->
+    <section id="about" class="container">
+        <div class="identity-card">
+            <div class="statement-text">
+                <h3>Hi, Samantha here!</h3>
+                <p>I am a local delivery driver and I've noticed a lot of mailboxes could use some LOVE! So, I have started this venture to help the community and do just that!</p>
+                <p>Let me give life back to your mailbox and make sure your critical deliveries reliably get to YOU!</p>
+            </div>
+            <div class="badge-box">
+                <div class="badge-discount">10% OFF</div>
+                <h4>Seniors & Veterans</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Proudly offering structural discounts to honor community dedication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. THE VISUAL CANVAS (PORTFOLIO / COLOR PALETTE OPTIONS) -->
+    <section id="gallery" class="container" style="flex-direction: column;">
+        <h2 class="section-title">Color Palette Architectural Choices</h2>
+        <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: var(--text-muted);">Choose one premium color accent baseline from our 6 curated community options</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-overlay">
+                    <h4>Classic Black & White Frameworks</h4>
+                    <p>Timeless Contrast Options</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-overlay">
+                    <h4>Tan & Natural Gray Elements</h4>
+                    <p>Earthy Grounded Palettes</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-overlay">
+                    <h4>Copper & Turquoise High-Contrast</h4>
+                    <p>Bespoke Metallic & Living Pop</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. THE EXPERIENCE TIERS (ALL-INCLUSIVE STRUCTURE) -->
+    <section id="offer" class="container" style="flex-direction: column;">
+        <h2 class="section-title">The All-Inclusive Package</h2>
+        <div class="pricing-container">
+            <h3>Complete Restoration Package</h3>
+            <div class="price-tag">$75</div>
+            <p style="font-weight: 600; color: var(--text-muted);">Everything required to make your delivery asset shine bright again.</p>
+            
+            <ul class="included-list">
+                <li>One custom color choice (6 options)</li>
+                <li>Highly visible house numbering</li>
+                <li>Protective high-grade UV clear coat</li>
+                <li>Delivery accuracy safety verification</li>
+            </ul>
+            
+            <button class="btn btn-filled selection-btn" style="width: 100%;">Select This Package Structure</button>
+        </div>
+    </section>
+
+    <!-- 6. DESIGN STUDIO INTAKE FORM -->
+    <section id="intake" class="container" style="flex-direction: column;">
+        <h2 class="section-title">Restoration Intake System</h2>
+        <div class="form-wrapper">
+            <form action="https://usebasin.com/f/INSERT_NEW_BASIN_ID_HERE" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="clientName">Your Name</label>
+                        <input type="text" id="clientName" name="name" required placeholder="Samantha Smith">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientEmail">Email Coordinates</label>
+                        <input type="email" id="clientEmail" name="email" required placeholder="yourname@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="colorSelection">Primary Color Choice</label>
+                        <select id="colorSelection" name="color_choice" required>
+                            <option value="">Select one variant...</option>
+                            <option value="black">Classic Black</option>
+                            <option value="white">Pristine White</option>
+                            <option value="tan">Warm Tan</option>
+                            <option value="gray">Sleek Gray</option>
+                            <option value="copper">Metallic Copper</option>
+                            <option value="turquoise">Vibrant Turquoise</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceDate">Preferred Service Date</label>
+                        <input type="date" id="serviceDate" name="service_date" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="location">Property Location Address</label>
+                        <input type="text" id="location" name="location" required placeholder="123 Community Lane, City State">
+                    </div>
+
+                    <!-- Core Identification Demographics Checkboxes -->
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="demographic[]" value="senior">
+                            Applying Senior Discount (10% Off)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="demographic[]" value="veteran">
+                            Applying Veteran Discount (10% Off)
+                        </label>
+                    </div>
+
+                    <!-- Custom Styled File Input -->
+                    <div class="form-group full-width">
+                        <label>Current Mailbox Profile Status / Inspiration Photo</label>
+                        <div class="file-upload-wrapper">
+                            <p class="file-upload-text" id="fileNameDisplay">Drag & drop asset photo context or <span>Browse files</span></p>
+                            <input type="file" id="fileUpload" name="mailbox_image" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="notes">Vision & House Number Placement Notes</label>
+                        <textarea id="notes" name="vision_notes" rows="4" placeholder="Specify your exact house numbers, side preferences, or special notes for your property setup..."></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-filled" style="width: 100%; max-width: 350px;">Secure Appointment</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 7. GUEST REVIEW STUDIO -->
+    <section id="reviews" class="container" style="flex-direction: column;">
+        <h2 class="section-title">Community Review Studio</h2>
+        <div class="review-studio-container">
+            <iframe class="iframe-placeholder" src="https://airtable.com/embed/INSERT_NEW_AIRTABLE_FORM_ID_HERE" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 RJ's Community Ventures. All Rights Reserved. Bringing life back to your delivery framework.</p>
+            <div class="contact-info">
+                <span>Call or Text: 405-968-5063</span>
+                <span>Email: RJSCV2026@GMAIL.COM</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTING -->
+    <script>
+        // Menu Toggle Animation Architecture
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close on select for responsive screens
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Instant Quick Scroll Action for Select Action Button
+        document.querySelector('.selection-btn').addEventListener('click', () => {
+            document.getElementById('intake').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Dynamic File Upload Status Monitor
+        const fileInput = document.getElementById('fileUpload');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+        fileInput.addEventListener('change', (e) => {
+            if(e.target.files.length > 0) {
+                fileNameDisplay.innerHTML = `Linked Visual Framework: <strong>${e.target.files[0].name}</strong>`;
+            } else {
+                fileNameDisplay.innerHTML = 'Drag & drop asset photo context or <span>Browse files</span>';
+            }
+        });
+    </script>
+</body>
+</html>
