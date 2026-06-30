@@ -466,14 +466,6 @@
             font-size: 1.5rem;
         }
 
-        /* --- 10. IFRAME PLACEHOLDER --- */
-        .iframe-placeholder {
-            width: 100%;
-            height: 650px;
-            border: none;
-            border-radius: 12px;
-        }
-
         /* --- 11. FOOTER --- */
         .footer {
             background: #111416;
@@ -656,7 +648,6 @@
             <h2 class="section-title">Restoration Intake System</h2>
             <div class="form-wrapper glass-card" style="padding: 40px; width: 100%;">
                 
-                <!-- Custom Form Routing Securely Through Basin Endpoint -->
                 <form action="https://usebasin.com/f/c130691d38f0" method="POST" class="basin-form">
                     
                     <div class="form-group">
@@ -703,10 +694,39 @@
             </div>
         </section>
 
+        <!-- Fixed Review Section: Native Custom Box routing right through Basin -->
         <section id="reviews" class="container" style="flex-direction: column;">
             <h2 class="section-title">Community Review Studio</h2>
-            <div class="review-studio-container glass-card" style="padding: 10px; width: 100%;">
-                <iframe class="iframe-placeholder" src="https://airtable.com/embed/YOUR_ACTUAL_SHARED_REVIEW_VIEW_ID" allowfullscreen></iframe>
+            <div class="review-studio-container glass-card" style="padding: 40px; width: 100%;">
+                
+                <!-- Routes to same Basin endpoint, but categorizes as a feedback form -->
+                <form action="https://usebasin.com/f/c130691d38f0" method="POST" class="basin-form">
+                    <!-- Hidden tag tells your dashboard email this submission is a Review vs an Intake Booking -->
+                    <input type="hidden" name="form_type" value="Neighborhood Review Submission">
+
+                    <div class="form-group">
+                        <label for="review-name">Your Name *</label>
+                        <input type="text" id="review-name" name="reviewer_name" required placeholder="Jane Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-rating">Experience Rating *</label>
+                        <select id="review-rating" name="rating" required>
+                            <option value="" disabled selected>-- Choose your rating stars --</option>
+                            <option value="5 Stars">⭐⭐⭐⭐⭐ (5 / 5 Excellent Service)</option>
+                            <option value="4 Stars">⭐⭐⭐⭐ (4 / 5 Great Experience)</option>
+                            <option value="3 Stars">⭐⭐⭐ (3 / 5 Satisfactory)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-text">Your Review *</label>
+                        <textarea id="review-text" name="review_comments" rows="4" required placeholder="Share your experience with Samantha's restoration work..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-filled" style="width: 100%; margin-top: 15px;">Submit Community Review</button>
+                </form>
+
             </div>
         </section>
 
