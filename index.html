@@ -45,7 +45,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Screen Protection Layer for Glassmorphism readability */
         .page-overlay-mask {
             background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(10px);
@@ -333,7 +332,7 @@
             80% { transform: rotate(2deg) scale(1.03); }
         }
 
-        /* --- 7. COLOR CHOICE GRID SYSTEM (6 SEPARATE BADGES) --- */
+        /* --- 7. COLOR CHOICE GRID SYSTEM --- */
         .color-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -360,7 +359,6 @@
             box-shadow: 0 12px 25px rgba(0,180,216,0.12);
         }
 
-        /* Color preview bubbles matching real sample tones */
         .color-dot {
             width: 32px;
             height: 32px;
@@ -382,7 +380,48 @@
             font-weight: 700;
         }
 
-        /* --- 8. EXPERIENCE TIERS --- */
+        /* --- 8. NATIVE BASIN INTAKE FORM STYLING --- */
+        .basin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1.2rem;
+            font-family: var(--font-body);
+            border: 2px solid rgba(0, 180, 216, 0.2);
+            border-radius: 12px;
+            background: #FFFFFF;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(0, 180, 216, 0.15);
+        }
+
+        /* --- 9. EXPERIENCE TIERS --- */
         .pricing-container {
             max-width: 700px;
             margin: 0 auto;
@@ -427,7 +466,7 @@
             font-size: 1.5rem;
         }
 
-        /* --- 10. AIRTABLE DYNAMIC EMBEDS --- */
+        /* --- 10. IFRAME PLACEHOLDER --- */
         .iframe-placeholder {
             width: 100%;
             height: 650px;
@@ -563,7 +602,6 @@
             </div>
         </section>
 
-        <!-- Dynamic List of 6 explicit Color Options -->
         <section id="gallery" class="container" style="flex-direction: column;">
             <h2 class="section-title">Color Palette Architectural Choices</h2>
             <p style="text-align: center; margin-top: -35px; margin-bottom: 45px; color: var(--text-muted); font-size: 1.4rem;">Choose one premium color accent baseline from our 6 curated community options</p>
@@ -616,12 +654,61 @@
 
         <section id="intake" class="container" style="flex-direction: column;">
             <h2 class="section-title">Restoration Intake System</h2>
-            <div class="form-wrapper glass-card" style="padding: 15px; width: 100%;">
-                <iframe class="airtable-embed iframe-placeholder" src="https://airtable.com/embed/appmcYXpl104029jz/pagACDCb3l2lYhihk/form" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <div class="form-wrapper glass-card" style="padding: 40px; width: 100%;">
+                
+                <!-- Custom Form Routing Securely Through Basin Endpoint -->
+                <form action="https://usebasin.com/f/c130691d38f0" method="POST" class="basin-form">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(405) 968-5063">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Service Address *</label>
+                        <input type="text" id="address" name="address" required placeholder="123 Neighborhood Lane">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Desired Mailbox Color *</label>
+                        <select id="color" name="color" required>
+                            <option value="" disabled selected>-- Select a premium color option --</option>
+                            <option value="Black">Black</option>
+                            <option value="White">White</option>
+                            <option value="Grey">Grey</option>
+                            <option value="Tan">Tan</option>
+                            <option value="Copper">Copper</option>
+                            <option value="Turquoise">Turquoise</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Special Instructions / Details</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Any specific notes or house number requests..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-filled" style="width: 100%; margin-top: 15px;">Submit Booking Request</button>
+                </form>
+
             </div>
         </section>
 
-        
+        <section id="reviews" class="container" style="flex-direction: column;">
+            <h2 class="section-title">Community Review Studio</h2>
+            <div class="review-studio-container glass-card" style="padding: 10px; width: 100%;">
+                <iframe class="iframe-placeholder" src="https://airtable.com/embed/YOUR_ACTUAL_SHARED_REVIEW_VIEW_ID" allowfullscreen></iframe>
+            </div>
+        </section>
 
         <footer class="footer">
             <div class="container">
