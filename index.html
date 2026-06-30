@@ -237,7 +237,7 @@
             font-weight: 400;
         }
 
-        /* --- 6. ABOUT BOX ARCHITECTURE (STACKED FOR EXTENDED READABILITY) --- */
+        /* --- 6. ABOUT BOX ARCHITECTURE --- */
         .glass-card {
             background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(12px);
@@ -271,7 +271,7 @@
         }
 
         .waving-panda {
-            width: 130px; /* Enhanced view size */
+            width: 130px;
             height: 130px;
             border-radius: 50%;
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -282,13 +282,13 @@
         }
 
         .statement-text h3 {
-            font-size: 2.4rem; /* Bold, high contrast title */
+            font-size: 2.4rem;
             margin-bottom: 16px;
             color: #0077B6;
         }
 
         .statement-text p {
-            font-size: 1.4rem; /* Maximized readability closer to target look */
+            font-size: 1.4rem;
             color: var(--text-primary);
             margin-bottom: 18px;
             line-height: 1.6;
@@ -333,41 +333,53 @@
             80% { transform: rotate(2deg) scale(1.03); }
         }
 
-        /* --- 7. COMMUNITY ACCENT GRID (FIXED BLACK TEXT LABELS) --- */
-        .portfolio-grid {
+        /* --- 7. COLOR CHOICE GRID SYSTEM (6 SEPARATE BADGES) --- */
+        .color-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
+            width: 100%;
         }
 
-        .portfolio-item {
-            background: rgba(255, 255, 255, 0.9);
+        .color-item {
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid rgba(0, 180, 216, 0.2);
             border-radius: 20px;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            padding: 30px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
             transition: var(--transition);
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-4px);
+        .color-item:hover {
+            transform: translateY(-3px);
             border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(0,180,216,0.1);
+            box-shadow: 0 12px 25px rgba(0,180,216,0.12);
         }
 
-        .portfolio-item h4 {
+        /* Color preview bubbles matching real sample tones */
+        .color-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .dot-black { background-color: #1A1A1A; }
+        .dot-white { background-color: #FFFFFF; border: 1px solid #D2D7DF; }
+        .dot-grey  { background-color: #8E949A; }
+        .dot-tan   { background-color: #D2B48C; }
+        .dot-copper { background-color: #B87333; }
+        .dot-turquoise { background-color: #40E0D0; }
+
+        .color-item h4 {
             color: var(--text-primary);
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-item p {
-            color: #0077B6;
-            font-size: 1.15rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         /* --- 8. EXPERIENCE TIERS --- */
@@ -449,7 +461,7 @@
 
         /* --- 12. RESPONSIVE DESIGN --- */
         @media (max-width: 992px) {
-            .portfolio-grid {
+            .color-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -479,7 +491,7 @@
                 font-size: 2.8rem;
             }
 
-            .portfolio-grid {
+            .color-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -530,7 +542,6 @@
             </div>
         </section>
 
-        <!-- Extended Full-Width layout for clear readability -->
         <section id="about" class="container">
             <div class="identity-layout glass-card">
                 <div class="statement-text-wrapper">
@@ -552,23 +563,35 @@
             </div>
         </section>
 
-        <!-- Upgraded explicitly visible neighborhood color choices section -->
+        <!-- Dynamic List of 6 explicit Color Options -->
         <section id="gallery" class="container" style="flex-direction: column;">
             <h2 class="section-title">Color Palette Architectural Choices</h2>
             <p style="text-align: center; margin-top: -35px; margin-bottom: 45px; color: var(--text-muted); font-size: 1.4rem;">Choose one premium color accent baseline from our 6 curated community options</p>
             
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h4>Black &amp; White</h4>
-                    <p>Classic Frameworks</p>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-dot dot-black"></div>
+                    <h4>Black</h4>
                 </div>
-                <div class="portfolio-item">
-                    <h4>Grey &amp; Tan</h4>
-                    <p>Earthy Grounded Palettes</p>
+                <div class="color-item">
+                    <div class="color-dot dot-white"></div>
+                    <h4>White</h4>
                 </div>
-                <div class="portfolio-item">
-                    <h4>Copper &amp; Turquoise</h4>
-                    <p>Bespoke Living Accent Pop</p>
+                <div class="color-item">
+                    <div class="color-dot dot-grey"></div>
+                    <h4>Grey</h4>
+                </div>
+                <div class="color-item">
+                    <div class="color-dot dot-tan"></div>
+                    <h4>Tan</h4>
+                </div>
+                <div class="color-item">
+                    <div class="color-dot dot-copper"></div>
+                    <h4>Copper</h4>
+                </div>
+                <div class="color-item">
+                    <div class="color-dot dot-turquoise"></div>
+                    <h4>Turquoise</h4>
                 </div>
             </div>
         </section>
