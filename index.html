@@ -466,6 +466,14 @@
             font-size: 1.5rem;
         }
 
+        /* --- 10. IFRAME PLACEHOLDER --- */
+        .iframe-placeholder {
+            width: 100%;
+            height: 650px;
+            border: none;
+            border-radius: 12px;
+        }
+
         /* --- 11. FOOTER --- */
         .footer {
             background: #111416;
@@ -543,7 +551,8 @@
             <div class="nav-container">
                 <a href="#" class="logo">
                     <img src="rj-logo.png" alt="RJ's Community Ventures Logo">
-                    <span>RJ's Ventures</span>
+                    <!-- Corrected Brand Text -->
+                    <span>RJ's Community Ventures</span>
                 </a>
                 <div class="nav-toggle" id="navToggle">
                     <span></span>
@@ -694,14 +703,11 @@
             </div>
         </section>
 
-        <!-- Fixed Review Section: Native Custom Box routing right through Basin -->
         <section id="reviews" class="container" style="flex-direction: column;">
             <h2 class="section-title">Community Review Studio</h2>
             <div class="review-studio-container glass-card" style="padding: 40px; width: 100%;">
                 
-                <!-- Routes to same Basin endpoint, but categorizes as a feedback form -->
                 <form action="https://usebasin.com/f/c130691d38f0" method="POST" class="basin-form">
-                    <!-- Hidden tag tells your dashboard email this submission is a Review vs an Intake Booking -->
                     <input type="hidden" name="form_type" value="Neighborhood Review Submission">
 
                     <div class="form-group">
